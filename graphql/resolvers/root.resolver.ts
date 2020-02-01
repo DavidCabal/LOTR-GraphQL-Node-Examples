@@ -13,10 +13,13 @@ export const root = {
   greetingWithHeaderValue: (_, request) => {
     return greetingWithHeaderValue(request);
   },
-  fellowshipMember: (args) => {
-    return lotrResolver.getFellowshipMember(args);
+  character: (args) => {
+    return lotrResolver.getCharacter(args);
   },
   fellowship: () => {
     return lotrResolver.getFellowship();
+  },
+  allCharacters: () => {
+    return lotrResolver.allCharacters();
   }
 };

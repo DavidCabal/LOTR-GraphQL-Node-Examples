@@ -1,13 +1,14 @@
-export interface FellowShipMemberInput {
+export interface CharacterInput {
   name: string;
 };
 
-export interface FellowshipMember {
+export interface Character {
   name: string;
   weapon: string;
+  inFellowship: boolean;
 }
 
 export interface Fellowship {
-  members: FellowshipMember[];
-  purpose: string;
+  members: Character[];
+  fellowShipPurpose: string;
 }

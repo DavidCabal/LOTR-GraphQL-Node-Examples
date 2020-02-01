@@ -1,7 +1,7 @@
-import { FellowShipMemberInput, FellowshipMember, Fellowship } from "./interfaces/lotr.interface";
+import { CharacterInput, Character, Fellowship } from "./interfaces/lotr.interface";
 import { lotrDB } from '../../../fakeDB/lotr';
 
-export const getFellowshipMember = (args: FellowShipMemberInput): FellowshipMember => {
+export const getCharacter = (args: CharacterInput): Character => {
   const member = lotrDB.members.find(member => member.name.toLowerCase() === args.name.toLowerCase());
   if (member) {
     return member;
@@ -11,5 +11,15 @@ export const getFellowshipMember = (args: FellowShipMemberInput): FellowshipMemb
 };
 
 export const getFellowship = (): Fellowship => {
-  return lotrDB;
+  const members = lotrDB.members.reduce((acc, character) => {
+    if (character.inFellowship) {
+      acc.push(character);
+    }
+    return acc;
+  }, []);
+  return Object.assign({ members }, { fellowShipPurpose: lotrDB.fellowShipPurpose });
+};
+
+export const allCharacters = (): Character[] => {
+  return lotrDB.members;
 };

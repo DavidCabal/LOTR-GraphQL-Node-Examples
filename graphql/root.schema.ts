@@ -2,14 +2,15 @@ import { buildSchema } from 'graphql';
 
 export const schema = buildSchema(`
 
-  type FellowshipMember {
+  type Character {
     name: String!
     weapon: String!
+    inFellowship: Boolean!
   }
 
   type Fellowship {
-    members: [FellowshipMember]!
-    purpose: String!
+    members: [Character]!
+    fellowShipPurpose: String!
   }
 
   type Query {
@@ -17,6 +18,7 @@ export const schema = buildSchema(`
     responseWithParam(name: String!): String!
     greetingWithHeaderValue: String!
     fellowship: Fellowship!
-    fellowshipMember(name: String): FellowshipMember!
+    character(name: String!): Character!
+    allCharacters: [Character]!
   }
 `);
