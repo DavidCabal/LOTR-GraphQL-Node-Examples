@@ -3,6 +3,12 @@ import * as withParams from './withParams/withParams.resolver';
 import { greetingWithHeaderValue } from './headerOnly/headerOnly.resolver';
 import * as lotrResolver from '../resolvers/lotr/lotr.resolver';
 
+/*
+  You could build every function directly into one file but that will quickly get
+  out of hand. Having a root resolver that aggregates all your resolvers helps
+  you to keep your project cleaner.
+*/
+
 export const root = {
   hardCodedResponse: () => {
     return basicFunctionWithNoParams();

@@ -1,6 +1,12 @@
 import { CharacterInput, Character, Fellowship } from "./interfaces/lotr.interface";
 import { lotrDB } from '../../../fakeDB/lotr';
 
+/*
+  Take note that your DB queries/logic/etc must still be performant. GraphQL does not magically
+  fix slow code. GraphQL CAN increase performance over the wire because less information can be
+  sent in a response. The server side code run time, however, is unaffected.
+*/
+
 export const getCharacter = (args: CharacterInput): Character => {
   const member = lotrDB.members.find(member => member.name.toLowerCase() === args.name.toLowerCase());
   if (member) {
